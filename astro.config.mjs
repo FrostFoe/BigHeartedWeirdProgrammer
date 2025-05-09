@@ -9,6 +9,7 @@ import keystatic from "@keystatic/astro";
 import react from "@astrojs/react";
 import { loadEnv } from "vite";
 import pagefind from "astro-pagefind";
+import netlify from '@astrojs/netlify';
 
 const { RUN_KEYSTATIC } = loadEnv(import.meta.env.MODE, process.cwd(), "");
 
@@ -23,6 +24,7 @@ if (RUN_KEYSTATIC === "true") {
 export default defineConfig({
   site: SITE.url,
   base: SITE.basePath,
+  adapter: netlify(),
   markdown: {
     remarkPlugins: [readingTime, modifiedTime],
   },
