@@ -11,20 +11,8 @@ const { title = "FrostGPT" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-pxHQzmC+p1JkMCp6ZCtGv6HzVhx76sRuFhx6MZ1Pf8hlAw7l4tuNmnQ3Aj4ltbsuV5DZyP5Ik3Bv5y0ZVXn7Dw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
   </head>
-  <body class="bg-gray-100 font-sans min-h-screen">
+  <body>
     <slot />
   </body>
 </html>
