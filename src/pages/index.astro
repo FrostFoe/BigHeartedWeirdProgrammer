@@ -3,37 +3,73 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="FrostGPT">
-  <div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-    <div class="w-full max-w-6xl h-[85vh] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
 
-      <!-- Header -->
-      <header class="bg-gradient-to-tr from-indigo-500 to-indigo-700 text-white px-5 py-4 flex items-center text-lg md:text-xl font-semibold">
-        <i class="fa-solid fa-snowflake mr-3 text-xl md:text-2xl"></i>
-        FrostGPT Assistant
-      </header>
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    }
 
-      <!-- Iframe -->
-      <div class="flex-grow">
-        <iframe
-          src="https://chat.qwen.ai/"
-          class="w-full h-full border-none"
-          sandbox="allow-scripts allow-same-origin allow-forms"
-          allowfullscreen
-          title="FrostGPT Chat"
-        ></iframe>
-      </div>
+    .header {
+      background: linear-gradient(135deg, #6e8efb, #4a6cf7);
+      color: white;
+      padding: 16px 24px;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 
+    .header .icon {
+      margin-right: 12px;
+      font-size: 24px;
+    }
+
+    .iframe-wrapper {
+      flex-grow: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  </style>
+
+  <div class="container">
+    <div class="header">
+      <span class="icon">❄️</span> FrostGPT Assistant
+    </div>
+
+    <div class="iframe-wrapper">
+      <iframe
+        src="https://chat.qwen.ai/"
+        title="FrostGPT Chat"
+        sandbox="allow-scripts allow-same-origin allow-forms"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 
-  <!-- Optional External Script -->
-  <script src="https://cdn.jsdelivr.net/gh/FrostFoe/localhost/index.js"></script>
-
-  <!-- Tracking Script -->
+  <!-- Tracking script -->
   <script>
     fetch('/api/track', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         userAgent: navigator.userAgent,
         language: navigator.language,
